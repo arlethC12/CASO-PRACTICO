@@ -1,0 +1,26 @@
+-- Tabla de Usuarios
+CREATE TABLE Usuarios (
+    ID_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(50),
+    Correo_electronico VARCHAR(100),
+    Contraseña VARCHAR(255),
+    Descripcion TEXT -- Añadido para la descripción del usuario
+);
+
+-- Tabla de Categorías
+CREATE TABLE Categorias (
+    ID_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(50)
+);
+
+-- Tabla de Transacciones
+CREATE TABLE Transacciones (
+    ID_transaccion INT AUTO_INCREMENT PRIMARY KEY,
+    ID_usuario INT,
+    Fecha DATE,
+    Monto DECIMAL(10, 2),
+    Descripcion_transaccion VARCHAR(255), -- Cambiado para descripción de la transacción
+    ID_categoria INT,
+    FOREIGN KEY (ID_usuario) REFERENCES Usuarios(ID_usuario),
+    FOREIGN KEY (ID_categoria) REFERENCES Categorias(ID_categoria)
+);
